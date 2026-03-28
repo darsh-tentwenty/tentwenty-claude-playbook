@@ -697,9 +697,7 @@
         color: #fff;
         letter-spacing: -0.01em;
       }
-      .mobile-nav-brand span {
-        color: var(--yellow);
-      }
+      .mobile-nav-brand span { color: var(--yellow); }
       .hamburger {
         background: none;
         border: none;
@@ -717,133 +715,180 @@
         border-radius: 2px;
         transition: all 0.25s;
       }
-      .hamburger.open span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-      }
-      .hamburger.open span:nth-child(2) {
-        opacity: 0;
-      }
-      .hamburger.open span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-      }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-      /* ── RESPONSIVE BREAKPOINTS ── */
+      /* ── TIMELINE (Section 12) ── */
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 19px;
+        top: 8px;
+        bottom: 8px;
+        width: 2px;
+        background: var(--border2);
+        z-index: 0;
+      }
+      .tl-item {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 20px;
+        padding-bottom: 24px;
+        position: relative;
+        z-index: 1;
+      }
+      .tl-item:last-child { padding-bottom: 0; }
+      .tl-dot {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        flex-shrink: 0;
+        border: 2px solid var(--bg);
+        position: relative;
+        z-index: 2;
+      }
+      .tl-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--r);
+        padding: 20px 22px;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .tl-card:hover {
+        border-color: var(--border2);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      }
+      .tl-phase {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .tl-title {
+        font-family: var(--font-display);
+        font-size: 16px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+      }
+      .tl-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 14px;
+      }
+      .tl-claude {
+        background: var(--ink);
+        border-radius: 7px;
+        padding: 12px 14px;
+        margin-bottom: 10px;
+      }
+      .tl-claude-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--yellow);
+        margin-bottom: 6px;
+      }
+      .tl-claude-text {
+        font-size: 12px;
+        color: rgba(240,237,228,0.75);
+        line-height: 1.6;
+        font-style: italic;
+      }
+      .tl-claude-text strong { color: #fff; font-style: normal; }
+      .prompt-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .chip {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 100px;
+        border: 1px solid var(--border2);
+        color: var(--ink2);
+        background: var(--surface2);
+        white-space: nowrap;
+      }
+      .chip-blue   { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
+      .chip-green  { background: #d1fae5; border-color: #6ee7b7; color: #065f46; }
+      .chip-purple { background: #ede9fe; border-color: #c4b5fd; color: #5b21b6; }
+      .chip-red    { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+      .chip-yellow { background: #fef9c3; border-color: #fde047; color: #713f12; }
+      .chip-ink    { background: var(--ink); border-color: var(--ink); color: var(--yellow); }
+      .dot-research { background: #dbeafe; }
+      .dot-strategy { background: #d1fae5; }
+      .dot-design   { background: #ede9fe; }
+      .dot-system   { background: #fef9c3; }
+      .dot-review   { background: #fee2e2; }
+      .dot-handoff  { background: var(--ink); }
+
+      /* ── RESPONSIVE ── */
       @media (max-width: 768px) {
-        .mobile-nav-bar {
-          display: flex;
-        }
-
-        .page-wrap {
-          flex-direction: column;
-        }
-
+        .mobile-nav-bar { display: flex; }
+        .page-wrap { flex-direction: column; }
         .sidebar {
           position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
           transform: translateX(-100%);
           transition: transform 0.3s ease;
           z-index: 200;
           padding-top: 64px;
         }
-        .sidebar.open {
-          transform: translateX(0);
-        }
-
-        .main {
-          width: 100%;
-        }
-
-        .hero {
-          padding: 36px 20px 32px;
-        }
-        .hero-body {
-          font-size: 14px;
-        }
-
-        .section {
-          padding: 40px 20px;
-        }
-
-        .section-title {
-          font-size: 22px;
-        }
-
-        /* Prompt blocks: stack label above content */
+        .sidebar.open { transform: translateX(0); }
+        .main { width: 100%; }
+        .hero { padding: 36px 20px 32px; }
+        .hero-body { font-size: 14px; }
+        .section { padding: 40px 20px; }
+        .section-title { font-size: 22px; }
         .prompt {
           grid-template-columns: 1fr;
           gap: 10px;
-          padding: 16px 16px;
+          padding: 16px;
         }
-        .prompt-prefix {
-          width: fit-content;
-        }
-
-        /* Setting rows: stack label above value */
+        .prompt-prefix { width: fit-content; }
         .setting-row {
           grid-template-columns: 1fr;
           gap: 8px;
           padding: 14px 16px;
         }
-
-        /* Phase rows: stack tag above body */
         .phase {
           grid-template-columns: 1fr;
           gap: 12px;
           padding: 20px 0;
         }
-        .phase-tag {
-          width: fit-content;
-          padding: 6px 12px;
-        }
-
-        /* Connector grid: 2 cols on mobile */
-        .connector-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        /* Cards: single col */
-        .cards {
-          grid-template-columns: 1fr;
-        }
-
-        /* Memory cards: single col */
-        .memory-cards {
-          grid-template-columns: 1fr;
-        }
-
-        /* Two col: single col */
-        .two-col {
-          grid-template-columns: 1fr;
-        }
-
-        /* Handoff grid: single col */
-        .handoff-grid {
-          grid-template-columns: 1fr;
-        }
-
-        /* Code block: wrap long URLs */
-        .code {
-          word-break: break-all;
-          font-size: 11px;
-        }
-
-        /* Plugin row: allow wrap */
-        .plugin-row {
-          flex-wrap: wrap;
-          gap: 4px;
-        }
+        .phase-tag { width: fit-content; padding: 6px 12px; }
+        .connector-grid { grid-template-columns: repeat(2, 1fr); }
+        .cards { grid-template-columns: 1fr; }
+        .memory-cards { grid-template-columns: 1fr; }
+        .two-col { grid-template-columns: 1fr; }
+        .handoff-grid { grid-template-columns: 1fr; }
+        .code { word-break: break-all; font-size: 11px; }
+        .plugin-row { flex-wrap: wrap; gap: 4px; }
+        .tl-item { grid-template-columns: 32px 1fr; gap: 14px; }
+        .tl-dot { width: 32px; height: 32px; font-size: 13px; }
+        .timeline::before { left: 15px; }
+        .chip { white-space: normal; }
       }
-
       @media (max-width: 400px) {
-        .connector-grid {
-          grid-template-columns: 1fr;
-        }
-        .hero-title {
-          font-size: 30px;
-        }
+        .connector-grid { grid-template-columns: 1fr; }
+        .hero-title { font-size: 30px; }
       }
 
       /* ── WORKFLOW PHASES ── */
@@ -961,6 +1006,9 @@
         >
         <a href="#skills" class="nav-item"
           ><span class="nav-dot"></span>Skills & Plugins</a
+        >
+        <a href="#workflow" class="nav-item"
+          ><span class="nav-dot"></span>Project Workflow</a
         >
 
         <div class="sidebar-footer">Made for tentwenty designers & devs.</div>
@@ -1806,6 +1854,238 @@
             </div>
           </div>
         </section>
+        <!-- 12 PROJECT WORKFLOW -->
+        <section class="section" id="workflow">
+          <div class="section-header">
+            <div class="section-num">12 — Project Workflow</div>
+            <h2 class="section-title">Claude × Figma across the tentwenty project workflow</h2>
+            <p class="section-desc">
+              Every phase of a website project — from brief to launch — mapped to exactly where Claude and Figma work together. Use this as your day-to-day reference.
+            </p>
+          </div>
+
+          <div class="timeline">
+
+            <!-- 1 -->
+            <div class="tl-item">
+              <div class="tl-dot dot-research">🔍</div>
+              <div class="tl-card">
+                <div class="tl-phase" style="color:#1e40af;">Phase 1 · Discovery & Brief</div>
+                <div class="tl-title">Kickoff, brief analysis & stakeholder goals</div>
+                <div class="tl-desc">Client brief comes in — goals, audience, competitors, scope. Translate a raw document into a clear design direction fast.</div>
+                <div class="tl-claude">
+                  <div class="tl-claude-label">Claude does</div>
+                  <div class="tl-claude-text">Paste the client brief → Claude extracts <strong>design goals, audience personas, and constraints</strong>. Ask it to identify gaps before your kickoff call. Summarise competitors into a structured table.</div>
+                </div>
+                <div class="prompt-chips">
+                  <span class="chip chip-blue">Summarise this brief into goals + constraints</span>
+                  <span class="chip chip-blue">What questions should I ask the client?</span>
+                  <span class="chip chip-blue">Analyse these 3 competitor sites</span>
+                </div>
+                <div class="phase-tools" style="margin-top:12px;">
+                  <span class="phase-tool">Claude Projects</span>
+                  <span class="phase-tool">Deep Research</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="tl-item">
+              <div class="tl-dot dot-research">🧪</div>
+              <div class="tl-card">
+                <div class="tl-phase" style="color:#1e40af;">Phase 2 · UX Research</div>
+                <div class="tl-title">User research, personas & journey maps</div>
+                <div class="tl-desc">Building empathy for the end user before touching Figma. Interview scripts, personas, pain-point mapping.</div>
+                <div class="tl-claude">
+                  <div class="tl-claude-label">Claude + Figma (QoQo plugin) does</div>
+                  <div class="tl-claude-text">Claude drafts <strong>interview scripts and survey questions</strong>. Use <strong>QoQo.ai Figma plugin</strong> to generate personas, journey maps and affinity maps directly onto a FigJam board. Claude synthesises interview notes into key insights.</div>
+                </div>
+                <div class="prompt-chips">
+                  <span class="chip chip-blue">Write 8 user interview questions for [audience]</span>
+                  <span class="chip chip-blue">Turn these notes into a user persona</span>
+                  <span class="chip chip-blue">Map the pain points into a journey</span>
+                </div>
+                <div class="phase-tools" style="margin-top:12px;">
+                  <span class="phase-tool">QoQo.ai (Figma)</span>
+                  <span class="phase-tool">FigJam</span>
+                  <span class="phase-tool">Claude Projects</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="tl-item">
+              <div class="tl-dot dot-strategy">🗺️</div>
+              <div class="tl-card">
+                <div class="tl-phase" style="color:#065f46;">Phase 3 · Sitemap & IA</div>
+                <div class="tl-title">Information architecture & page structure</div>
+                <div class="tl-desc">Deciding what pages exist, how they connect, what content lives where. Often goes back-and-forth with the client.</div>
+                <div class="tl-claude">
+                  <div class="tl-claude-label">Claude does</div>
+                  <div class="tl-claude-text">From the brief + research, Claude generates a <strong>full sitemap with page names, hierarchy and content notes</strong>. Drop it into FigJam as a structured list. Claude also drafts content outlines per page.</div>
+                </div>
+                <div class="prompt-chips">
+                  <span class="chip chip-green">Generate a sitemap for a [type] website</span>
+                  <span class="chip chip-green">Write a content outline for the homepage</span>
+                  <span class="chip chip-green">Suggest nav structure for this audience</span>
+                </div>
+                <div class="phase-tools" style="margin-top:12px;">
+                  <span class="phase-tool">Claude Artifacts</span>
+                  <span class="phase-tool">FigJam</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="tl-item">
+              <div class="tl-dot dot-design">🎨</div>
+              <div class="tl-card">
+                <div class="tl-phase" style="color:#5b21b6;">Phase 4 · Moodboard & Visual Direction</div>
+                <div class="tl-title">Visual language, references & tone</div>
+                <div class="tl-desc">Establishing the visual feel before committing to a design system. Colour direction, typographic mood, reference gathering.</div>
+                <div class="tl-claude">
+                  <div class="tl-claude-label">Claude + Figma does</div>
+                  <div class="tl-claude-text">Claude generates <strong>detailed visual direction prompts</strong> — brand adjectives, colour palette rationale, typographic pairings. Use <strong>Figma AI Canvas Agent</strong> to turn those into moodboard frames directly on canvas.</div>
+                </div>
+                <div class="prompt-chips">
+                  <span class="chip chip-purple">Describe a visual direction for [brand adjectives]</span>
+                  <span class="chip chip-purple">Suggest 3 type pairings with rationale</span>
+                  <span class="chip chip-purple">Generate a colour palette for [mood]</span>
+                </div>
+                <div class="phase-tools" style="margin-top:12px;">
+                  <span class="phase-tool">Figma AI (Canvas Agent)</span>
+                  <span class="phase-tool">Claude Artifacts</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="tl-item">
+              <div class="tl-dot dot-system">🧱</div>
+              <div class="tl-card">
+                <div class="tl-phase" style="color:#713f12;">Phase 5 · Design System</div>
+                <div class="tl-title">Tokens, components & style foundations</div>
+                <div class="tl-desc">Building the single source of truth — colours, type scale, spacing, component library — before any screens are designed.</div>
+                <div class="tl-claude">
+                  <div class="tl-claude-label">Claude + Figma MCP does</div>
+                  <div class="tl-claude-text">Claude generates <strong>token naming conventions, spacing scales and component specs</strong>. With Figma MCP connected to Claude Code, it reads your variables directly and writes a <strong>SKILL.md</strong> that teaches devs the full system.</div>
+                </div>
+                <div class="prompt-chips">
+                  <span class="chip chip-yellow">Generate a spacing scale for this project</span>
+                  <span class="chip chip-yellow">Document these tokens as a SKILL.md</span>
+                  <span class="chip chip-yellow">Write component usage rules for Button</span>
+                </div>
+                <div class="phase-tools" style="margin-top:12px;">
+                  <span class="phase-tool">Figma MCP</span>
+                  <span class="phase-tool">Tokens Studio</span>
+                  <span class="phase-tool">Claude Code</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="tl-item">
+              <div class="tl-dot dot-design">📐</div>
+              <div class="tl-card">
+                <div class="tl-phase" style="color:#5b21b6;">Phase 6 · Wireframes & Screen Design</div>
+                <div class="tl-title">Lo-fi flows → hi-fi screens</div>
+                <div class="tl-desc">Translating IA and content outlines into actual layouts. Moving from wireframes to polished, component-driven screens.</div>
+                <div class="tl-claude">
+                  <div class="tl-claude-label">Claude + Figma does</div>
+                  <div class="tl-claude-text">Use <strong>UX Pilot Figma plugin</strong> to prompt-generate wireframe frames. Claude writes <strong>UX copy, microcopy, and placeholder content</strong> matched to the brand voice. Ask Claude to critique layouts for hierarchy and accessibility before moving to hi-fi.</div>
+                </div>
+                <div class="prompt-chips">
+                  <span class="chip chip-purple">Write headline + subheadline for this hero section</span>
+                  <span class="chip chip-purple">Critique this layout for visual hierarchy</span>
+                  <span class="chip chip-purple">Suggest CTA copy for [goal]</span>
+                </div>
+                <div class="phase-tools" style="margin-top:12px;">
+                  <span class="phase-tool">UX Pilot (Figma)</span>
+                  <span class="phase-tool">Figma AI</span>
+                  <span class="phase-tool">Claude Projects</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="tl-item">
+              <div class="tl-dot dot-review">💬</div>
+              <div class="tl-card">
+                <div class="tl-phase" style="color:#991b1b;">Phase 7 · Client Presentation & Feedback</div>
+                <div class="tl-title">Presenting, handling feedback & iterating</div>
+                <div class="tl-desc">Sharing screens for approval, collecting structured feedback, making sense of conflicting notes, and turning it into clear revision tasks.</div>
+                <div class="tl-claude">
+                  <div class="tl-claude-label">Claude does</div>
+                  <div class="tl-claude-text">Claude writes the <strong>presentation narrative</strong> for each screen — explaining design decisions in client language. Paste raw feedback → Claude organises it into <strong>prioritised revision tasks</strong> and flags conflicting requests.</div>
+                </div>
+                <div class="prompt-chips">
+                  <span class="chip chip-red">Write a presentation narrative for this homepage</span>
+                  <span class="chip chip-red">Organise this feedback into revision tasks</span>
+                  <span class="chip chip-red">Flag conflicting requests in this feedback</span>
+                </div>
+                <div class="phase-tools" style="margin-top:12px;">
+                  <span class="phase-tool">Claude Projects</span>
+                  <span class="phase-tool">Figma Dev Mode</span>
+                  <span class="phase-tool">Monday.com</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="tl-item">
+              <div class="tl-dot dot-strategy">🧭</div>
+              <div class="tl-card">
+                <div class="tl-phase" style="color:#065f46;">Phase 8 · Prototype & User Testing</div>
+                <div class="tl-title">Interactive prototypes & usability validation</div>
+                <div class="tl-desc">Making designs clickable and testable, writing test scripts, analysing session results.</div>
+                <div class="tl-claude">
+                  <div class="tl-claude-label">Claude + Figma does</div>
+                  <div class="tl-claude-text">Claude writes <strong>usability test scripts and task scenarios</strong>. Use <strong>Attention Insight Figma plugin</strong> to run AI heatmaps before live testing. Claude analyses session notes → <strong>issues ranked by severity</strong> with recommended fixes.</div>
+                </div>
+                <div class="prompt-chips">
+                  <span class="chip chip-green">Write a usability test script for this flow</span>
+                  <span class="chip chip-green">Rank these issues by severity</span>
+                  <span class="chip chip-green">Suggest fixes for this drop-off point</span>
+                </div>
+                <div class="phase-tools" style="margin-top:12px;">
+                  <span class="phase-tool">Attention Insight (Figma)</span>
+                  <span class="phase-tool">Claude Projects</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="tl-item">
+              <div class="tl-dot dot-handoff">🤝</div>
+              <div class="tl-card">
+                <div class="tl-phase" style="color:var(--yellow);">Phase 9 · Dev Handoff & Build</div>
+                <div class="tl-title">Figma → production-ready code</div>
+                <div class="tl-desc">The final bridge — designer prepares the file, developer receives it with Claude Code + Figma MCP and builds with zero back-and-forth.</div>
+                <div class="tl-claude">
+                  <div class="tl-claude-label">Claude Code + Figma MCP does</div>
+                  <div class="tl-claude-text">Dev runs <strong>Claude Code with Figma MCP active</strong> + the UI/UX Pro Max skill loaded. Claude reads design tokens, spacing, and component names directly from Figma and writes <strong>production-ready React components</strong> that match the design system exactly.</div>
+                </div>
+                <div class="prompt-chips">
+                  <span class="chip chip-ink">Implement this Figma frame as a React component</span>
+                  <span class="chip chip-ink">Match spacing and tokens exactly from the design</span>
+                  <span class="chip chip-ink">Note any edge cases or missing states</span>
+                </div>
+                <div class="phase-tools" style="margin-top:12px;">
+                  <span class="phase-tool">Claude Code</span>
+                  <span class="phase-tool">Figma MCP</span>
+                  <span class="phase-tool">UI/UX Pro Max Skill</span>
+                  <span class="phase-tool">Figma Dev Mode</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end timeline -->
+
+          <div class="callout callout-yellow" style="margin-top:32px;">
+            <strong>How to use this:</strong> Each phase maps directly to your tentwenty project board. Bookmark the prompt chips that match your current phase — copy, adapt, and run them in Claude with your project context loaded.
+          </div>
+        </section>
+
       </main>
     </div>
 
@@ -1817,7 +2097,6 @@
         hamburger.classList.toggle("open");
         sidebar.classList.toggle("open");
       });
-      // Close sidebar when a nav link is tapped on mobile
       document.querySelectorAll(".nav-item").forEach(link => {
         link.addEventListener("click", () => {
           hamburger.classList.remove("open");
