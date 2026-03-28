@@ -678,6 +678,174 @@
         margin-top: 1px;
       }
 
+      /* ── MOBILE NAV TOGGLE ── */
+      .mobile-nav-bar {
+        display: none;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--ink);
+        padding: 14px 20px;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .mobile-nav-brand {
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.01em;
+      }
+      .mobile-nav-brand span {
+        color: var(--yellow);
+      }
+      .hamburger {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding: 4px;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: rgba(255,255,255,0.7);
+        border-radius: 2px;
+        transition: all 0.25s;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* ── RESPONSIVE BREAKPOINTS ── */
+      @media (max-width: 768px) {
+        .mobile-nav-bar {
+          display: flex;
+        }
+
+        .page-wrap {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease;
+          z-index: 200;
+          padding-top: 64px;
+        }
+        .sidebar.open {
+          transform: translateX(0);
+        }
+
+        .main {
+          width: 100%;
+        }
+
+        .hero {
+          padding: 36px 20px 32px;
+        }
+        .hero-body {
+          font-size: 14px;
+        }
+
+        .section {
+          padding: 40px 20px;
+        }
+
+        .section-title {
+          font-size: 22px;
+        }
+
+        /* Prompt blocks: stack label above content */
+        .prompt {
+          grid-template-columns: 1fr;
+          gap: 10px;
+          padding: 16px 16px;
+        }
+        .prompt-prefix {
+          width: fit-content;
+        }
+
+        /* Setting rows: stack label above value */
+        .setting-row {
+          grid-template-columns: 1fr;
+          gap: 8px;
+          padding: 14px 16px;
+        }
+
+        /* Phase rows: stack tag above body */
+        .phase {
+          grid-template-columns: 1fr;
+          gap: 12px;
+          padding: 20px 0;
+        }
+        .phase-tag {
+          width: fit-content;
+          padding: 6px 12px;
+        }
+
+        /* Connector grid: 2 cols on mobile */
+        .connector-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* Cards: single col */
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        /* Memory cards: single col */
+        .memory-cards {
+          grid-template-columns: 1fr;
+        }
+
+        /* Two col: single col */
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+
+        /* Handoff grid: single col */
+        .handoff-grid {
+          grid-template-columns: 1fr;
+        }
+
+        /* Code block: wrap long URLs */
+        .code {
+          word-break: break-all;
+          font-size: 11px;
+        }
+
+        /* Plugin row: allow wrap */
+        .plugin-row {
+          flex-wrap: wrap;
+          gap: 4px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .connector-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-title {
+          font-size: 30px;
+        }
+      }
+
       /* ── WORKFLOW PHASES ── */
       .phases {
         display: flex;
@@ -740,6 +908,14 @@
     </style>
   </head>
   <body>
+    <!-- ── MOBILE TOP BAR ── -->
+    <nav class="mobile-nav-bar">
+      <div class="mobile-nav-brand">tentwenty <span>Playbook</span></div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
     <div class="page-wrap">
       <!-- ── SIDEBAR ── -->
       <aside class="sidebar">
@@ -1634,6 +1810,21 @@
     </div>
 
     <script>
+      // ── MOBILE HAMBURGER ──
+      const hamburger = document.getElementById("hamburger");
+      const sidebar = document.querySelector(".sidebar");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        sidebar.classList.toggle("open");
+      });
+      // Close sidebar when a nav link is tapped on mobile
+      document.querySelectorAll(".nav-item").forEach(link => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("open");
+          sidebar.classList.remove("open");
+        });
+      });
+
       const navItems = document.querySelectorAll(".nav-item");
       const sections = document.querySelectorAll("section[id]");
 
