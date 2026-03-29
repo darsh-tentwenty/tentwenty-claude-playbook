@@ -678,219 +678,6 @@
         margin-top: 1px;
       }
 
-      /* ── MOBILE NAV TOGGLE ── */
-      .mobile-nav-bar {
-        display: none;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: var(--ink);
-        padding: 14px 20px;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
-      .mobile-nav-brand {
-        font-family: var(--font-display);
-        font-size: 14px;
-        font-weight: 800;
-        color: #fff;
-        letter-spacing: -0.01em;
-      }
-      .mobile-nav-brand span { color: var(--yellow); }
-      .hamburger {
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        padding: 4px;
-      }
-      .hamburger span {
-        display: block;
-        width: 22px;
-        height: 2px;
-        background: rgba(255,255,255,0.7);
-        border-radius: 2px;
-        transition: all 0.25s;
-      }
-      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .hamburger.open span:nth-child(2) { opacity: 0; }
-      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-      /* ── TIMELINE (Section 12) ── */
-      .timeline {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-      }
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 19px;
-        top: 8px;
-        bottom: 8px;
-        width: 2px;
-        background: var(--border2);
-        z-index: 0;
-      }
-      .tl-item {
-        display: grid;
-        grid-template-columns: 40px 1fr;
-        gap: 20px;
-        padding-bottom: 24px;
-        position: relative;
-        z-index: 1;
-      }
-      .tl-item:last-child { padding-bottom: 0; }
-      .tl-dot {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        flex-shrink: 0;
-        border: 2px solid var(--bg);
-        position: relative;
-        z-index: 2;
-      }
-      .tl-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--r);
-        padding: 20px 22px;
-        transition: border-color 0.2s, box-shadow 0.2s;
-      }
-      .tl-card:hover {
-        border-color: var(--border2);
-        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-      }
-      .tl-phase {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        margin-bottom: 4px;
-      }
-      .tl-title {
-        font-family: var(--font-display);
-        font-size: 16px;
-        font-weight: 800;
-        margin-bottom: 8px;
-        letter-spacing: -0.01em;
-      }
-      .tl-desc {
-        font-size: 13px;
-        color: var(--muted);
-        line-height: 1.6;
-        margin-bottom: 14px;
-      }
-      .tl-claude {
-        background: var(--ink);
-        border-radius: 7px;
-        padding: 12px 14px;
-        margin-bottom: 10px;
-      }
-      .tl-claude-label {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--yellow);
-        margin-bottom: 6px;
-      }
-      .tl-claude-text {
-        font-size: 12px;
-        color: rgba(240,237,228,0.75);
-        line-height: 1.6;
-        font-style: italic;
-      }
-      .tl-claude-text strong { color: #fff; font-style: normal; }
-      .prompt-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-top: 10px;
-      }
-      .chip {
-        font-size: 11px;
-        font-weight: 600;
-        padding: 4px 10px;
-        border-radius: 100px;
-        border: 1px solid var(--border2);
-        color: var(--ink2);
-        background: var(--surface2);
-        white-space: nowrap;
-      }
-      .chip-blue   { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
-      .chip-green  { background: #d1fae5; border-color: #6ee7b7; color: #065f46; }
-      .chip-purple { background: #ede9fe; border-color: #c4b5fd; color: #5b21b6; }
-      .chip-red    { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
-      .chip-yellow { background: #fef9c3; border-color: #fde047; color: #713f12; }
-      .chip-ink    { background: var(--ink); border-color: var(--ink); color: var(--yellow); }
-      .dot-research { background: #dbeafe; }
-      .dot-strategy { background: #d1fae5; }
-      .dot-design   { background: #ede9fe; }
-      .dot-system   { background: #fef9c3; }
-      .dot-review   { background: #fee2e2; }
-      .dot-handoff  { background: var(--ink); }
-
-      /* ── RESPONSIVE ── */
-      @media (max-width: 768px) {
-        .mobile-nav-bar { display: flex; }
-        .page-wrap { flex-direction: column; }
-        .sidebar {
-          position: fixed;
-          top: 0; left: 0;
-          width: 100%; height: 100%;
-          transform: translateX(-100%);
-          transition: transform 0.3s ease;
-          z-index: 200;
-          padding-top: 64px;
-        }
-        .sidebar.open { transform: translateX(0); }
-        .main { width: 100%; }
-        .hero { padding: 36px 20px 32px; }
-        .hero-body { font-size: 14px; }
-        .section { padding: 40px 20px; }
-        .section-title { font-size: 22px; }
-        .prompt {
-          grid-template-columns: 1fr;
-          gap: 10px;
-          padding: 16px;
-        }
-        .prompt-prefix { width: fit-content; }
-        .setting-row {
-          grid-template-columns: 1fr;
-          gap: 8px;
-          padding: 14px 16px;
-        }
-        .phase {
-          grid-template-columns: 1fr;
-          gap: 12px;
-          padding: 20px 0;
-        }
-        .phase-tag { width: fit-content; padding: 6px 12px; }
-        .connector-grid { grid-template-columns: repeat(2, 1fr); }
-        .cards { grid-template-columns: 1fr; }
-        .memory-cards { grid-template-columns: 1fr; }
-        .two-col { grid-template-columns: 1fr; }
-        .handoff-grid { grid-template-columns: 1fr; }
-        .code { word-break: break-all; font-size: 11px; }
-        .plugin-row { flex-wrap: wrap; gap: 4px; }
-        .tl-item { grid-template-columns: 32px 1fr; gap: 14px; }
-        .tl-dot { width: 32px; height: 32px; font-size: 13px; }
-        .timeline::before { left: 15px; }
-        .chip { white-space: normal; }
-      }
-      @media (max-width: 400px) {
-        .connector-grid { grid-template-columns: 1fr; }
-        .hero-title { font-size: 30px; }
-      }
-
       /* ── WORKFLOW PHASES ── */
       .phases {
         display: flex;
@@ -953,14 +740,6 @@
     </style>
   </head>
   <body>
-    <!-- ── MOBILE TOP BAR ── -->
-    <nav class="mobile-nav-bar">
-      <div class="mobile-nav-brand">tentwenty <span>Playbook</span></div>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-
     <div class="page-wrap">
       <!-- ── SIDEBAR ── -->
       <aside class="sidebar">
@@ -1004,11 +783,11 @@
         <a href="#dev-handoff" class="nav-item"
           ><span class="nav-dot"></span>Dev Handoff</a
         >
+        <a href="#bridge" class="nav-item"
+          ><span class="nav-dot"></span>Bridge & SKILL.md</a
+        >
         <a href="#skills" class="nav-item"
           ><span class="nav-dot"></span>Skills & Plugins</a
-        >
-        <a href="#workflow" class="nav-item"
-          ><span class="nav-dot"></span>Project Workflow</a
         >
 
         <div class="sidebar-footer">Made for tentwenty designers & devs.</div>
@@ -1727,6 +1506,184 @@
           </div>
         </section>
 
+        <!-- 11b BRIDGE & SKILL.md -->
+        <section class="section" id="bridge">
+          <div class="section-header">
+            <div class="section-num">10b — Bridge & SKILL.md</div>
+            <h2 class="section-title">What devs receive & how they use it</h2>
+            <p class="section-desc">
+              When both designers and devs use Claude, the handoff becomes a shared context system — not a one-time file drop. This section explains what the bridge (design to code) prepares, what gets handed to developers, and the exact prompt sequence they run in Claude Code to go from Figma to production.
+            </p>
+          </div>
+
+          <!-- WHAT IS SKILL.md -->
+          <div class="section-num" style="margin-bottom:16px;">What is a SKILL.md?</div>
+          <div class="callout callout-yellow" style="margin-top:0; margin-bottom:28px;">
+            <strong>The simple version:</strong> A SKILL.md is a briefing document written <em>for Claude</em>, not for humans. It's a markdown file the dev loads into Claude Code at the start of every session — so Claude already knows your design system, token names, font rules, and component conventions before writing a single line of code. No guessing. No raw hex values. No wrong fonts.
+          </div>
+
+          <!-- SKILL.md CONTENTS -->
+          <div class="section-num" style="margin-bottom:16px;">What's inside a SKILL.md</div>
+          <div class="steps" style="margin-bottom:32px;">
+            <div class="step">
+              <div class="step-num">01</div>
+              <div>
+                <div class="step-title">Project context & hard rules</div>
+                <div class="step-desc">Project name, client, framework (React / Next.js), language (TypeScript), direction (LTR + RTL). Plus the non-negotiable rules — e.g. <em>"Never use raw hex values. Always reference a CSS variable. Headings use ithra font. Body uses Helvetica Neue. Never swap these."</em></div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <div>
+                <div class="step-title">Design tokens — actual values</div>
+                <div class="step-desc">Colours, type scale, spacing, border radius — pulled directly from your exported <code style="background:var(--surface2);padding:1px 6px;border-radius:4px;font-size:12px;">design-tokens.json</code>. Not descriptions — the real values. Claude Code reads these and uses them verbatim when generating code.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <div>
+                <div class="step-title">Typography rules</div>
+                <div class="step-desc">Full type scale for desktop LTR, Arabic RTL, and mobile breakpoints. Arabic headings are larger (h1 = 70px vs 64px) with taller line heights — the kind of detail a dev would silently get wrong. SKILL.md makes it impossible to miss.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">04</div>
+              <div>
+                <div class="step-title">Component conventions</div>
+                <div class="step-desc">How specific components behave, their variants, edge cases, and designer intent. Example: <em>"Button/Primary — border-radius 8px, fixed height 48px, full width on mobile. Button label uses buttons/b1-reg token."</em> You write this. MCP can't infer intent from layers alone.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">05</div>
+              <div>
+                <div class="step-title">This sprint's frame index</div>
+                <div class="step-desc">A table of every frame in this delivery — name, page, status (✅ Ready / ⚠️ Partial / 🔜 Not ready), and notes. Dev knows exactly what to build now vs. what to wait on. Updated every handoff.</div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">06</div>
+              <div>
+                <div class="step-title">Pre-answered developer questions</div>
+                <div class="step-desc">Before the dev even opens Figma, the bridge runs Claude's audit prompt and answers every flag. <em>"Does the hero use absolute positioning? Yes — badge uses position:relative parent + absolute child. Do not convert to flex."</em> Questions stop before they start.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HOW SKILL.md IS MADE -->
+          <div class="section-num" style="margin-bottom:16px;">How the bridge builds the SKILL.md</div>
+          <div class="prompts" style="margin-bottom:32px;">
+            <div class="prompt">
+              <div class="prompt-prefix px-gen">Step 1</div>
+              <div class="prompt-content">
+                <div class="prompt-text">Read this Figma file: [url]. Generate a SKILL.md for a developer. Extract all design tokens, component names, layer conventions, Auto Layout patterns, and any absolute positioning usage. Flag anything ambiguous.</div>
+                <div class="prompt-hint">Run with Figma MCP active. Claude extracts the raw data in ~30 seconds. This gives you the base.</div>
+              </div>
+            </div>
+            <div class="prompt">
+              <div class="prompt-prefix px-fix">Step 2</div>
+              <div class="prompt-content">
+                <div class="prompt-text">You manually add: component intent, edge cases, what changed this sprint, and the frame index. This is the human layer MCP can't read — the <em>why</em> behind design decisions.</div>
+                <div class="prompt-hint">Takes ~10–15 minutes per handoff. This is the core of the bridge role.</div>
+              </div>
+            </div>
+            <div class="prompt">
+              <div class="prompt-prefix px-use">Step 3</div>
+              <div class="prompt-content">
+                <div class="prompt-text">Audit this Figma file [url] for MCP readiness. List any frames not using Auto Layout, missing variable bindings, unnamed layers, or absolute positioning that needs annotation. Give me a checklist.</div>
+                <div class="prompt-hint">Fix every flag before sharing the Figma URL. Dev never receives an unaudited file.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HANDOFF PACKAGE -->
+          <div class="section-num" style="margin-bottom:16px;">The handoff package — what devs receive</div>
+          <div class="handoff-grid" style="margin-bottom:28px;">
+            <div class="handoff-card design-card">
+              <div class="handoff-title">Bridge delivers ✓</div>
+              <ul class="handoff-list">
+                <li>MCP-audited Figma URL (clean, no stale layers)</li>
+                <li>SKILL.md with full token + convention context</li>
+                <li>Frame index — status per frame, ready vs. waiting</li>
+                <li>Pre-answered questions doc (ambiguities resolved)</li>
+                <li>Slack message with structured summary</li>
+                <li>design-tokens.json exported from Tokens Studio</li>
+              </ul>
+            </div>
+            <div class="handoff-card dev-card">
+              <div class="handoff-title">Dev's Claude Code setup ✓</div>
+              <ul class="handoff-list">
+                <li>UI/UX Pro Max skill installed</li>
+                <li>Figma MCP connector active</li>
+                <li>SKILL.md loaded at session start</li>
+                <li>Implement Design skill loaded</li>
+                <li>Framework confirmed (React / Next.js / etc.)</li>
+                <li>Ambiguities → bridge first, not designer</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- DEV PROMPT SEQUENCE -->
+          <div class="section-num" style="margin-bottom:16px;">Dev prompt sequence — Figma to production</div>
+          <div class="prompts" style="margin-bottom:20px;">
+            <div class="prompt">
+              <div class="prompt-prefix px-use">1 · Load</div>
+              <div class="prompt-content">
+                <div class="prompt-text">Read this SKILL.md: [link or paste contents]. This is the design system for the project. Follow every rule in it exactly for all code you write in this session. Confirm you've read it.</div>
+                <div class="prompt-hint">Always the first prompt. Never skip this. Claude Code will confirm receipt and summarise the key rules back to you.</div>
+              </div>
+            </div>
+            <div class="prompt">
+              <div class="prompt-prefix px-use">2 · Orient</div>
+              <div class="prompt-content">
+                <div class="prompt-text">Using the Figma MCP, read this file: [url]. Give me a build order for the frames listed in the SKILL.md frame index — start with the most isolated components, end with the most complex compositions.</div>
+                <div class="prompt-hint">Claude reads the file and produces a dependency-ordered build plan. Dev knows exactly where to start.</div>
+              </div>
+            </div>
+            <div class="prompt">
+              <div class="prompt-prefix px-gen">3 · Build</div>
+              <div class="prompt-content">
+                <div class="prompt-text">Implement [Frame name] from this Figma file: [url]. Follow the SKILL.md conventions exactly — use the correct token names, font roles, spacing values, and component structure. Match all states. Note any edge cases you can't resolve from the design alone.</div>
+                <div class="prompt-hint">Repeat per frame, in build-order. Edge cases flagged here come to the bridge — not the designer.</div>
+              </div>
+            </div>
+            <div class="prompt">
+              <div class="prompt-prefix px-fix">4 · Fix Gap</div>
+              <div class="prompt-content">
+                <div class="prompt-text">The implementation differs from the Figma design in these ways: [describe diff]. The design intent was [explain — from SKILL.md or bridge]. Update the code to match. Figma frame for reference: [url].</div>
+                <div class="prompt-hint">For pixel-gap iteration after the first MCP pass. Always reference the SKILL.md intent, not just the visual diff.</div>
+              </div>
+            </div>
+            <div class="prompt">
+              <div class="prompt-prefix px-doc">5 · RTL</div>
+              <div class="prompt-content">
+                <div class="prompt-text">Convert this component to support RTL (Arabic). Use dir="rtl" on the wrapper. Switch to Arabic font tokens as specified in SKILL.md. Use padding-inline-start / padding-inline-end instead of left/right. Mirror directional icons with transform: scaleX(-1).</div>
+                <div class="prompt-hint">Run after each LTR component is approved. SKILL.md Arabic token section provides all the values.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLACK HANDOFF MESSAGE -->
+          <div class="section-num" style="margin-bottom:16px;">Slack handoff notification — drafted by Claude</div>
+          <div class="code" style="margin-bottom:20px;">
+            <span class="code-comment"># Prompt to generate the Slack message:</span><br/>
+            "Draft a Slack handoff message for the dev team. Sprint: [name].<br/>
+            Ready frames: [list]. Partial frames: [list + reason].<br/>
+            Key SKILL.md notes: [paste §4 component conventions].<br/>
+            Figma URL: [url]. SKILL.md: [link]."<br/><br/>
+            <span class="code-comment"># Output format Claude will produce:</span><br/>
+            🎨 <span class="code-url">Design Handoff — [Project] Sprint [N]</span><br/>
+            Figma: [url] · SKILL.md: [link]<br/>
+            ✅ Ready to build (N frames): Hero, Nav, Card...<br/>
+            ⚠️ Partial (N frames): Checkout/Mobile — hover states missing<br/>
+            📌 Key notes: Badge = absolute pos (annotated). Nav = CSS grid not flex.<br/>
+            ❓ Pre-answered: 4 questions resolved in SKILL.md §6.
+          </div>
+
+          <div class="callout callout-green">
+            <strong>The bridge rule:</strong> Dev hits an ambiguity → comes to you (bridge), not the designer. You resolve from SKILL.md context. If you can't, you go to the designer with a <em>precise</em> question — frame name, layer name, and exactly what's unclear. The designer never receives a vague "can you check this?"
+          </div>
+        </section>
+
         <!-- 11 SKILLS & PLUGINS -->
         <section class="section" id="skills">
           <div class="section-header">
@@ -1854,256 +1811,10 @@
             </div>
           </div>
         </section>
-        <!-- 12 PROJECT WORKFLOW -->
-        <section class="section" id="workflow">
-          <div class="section-header">
-            <div class="section-num">12 — Project Workflow</div>
-            <h2 class="section-title">Claude × Figma across the tentwenty project workflow</h2>
-            <p class="section-desc">
-              Every phase of a website project — from brief to launch — mapped to exactly where Claude and Figma work together. Use this as your day-to-day reference.
-            </p>
-          </div>
-
-          <div class="timeline">
-
-            <!-- 1 -->
-            <div class="tl-item">
-              <div class="tl-dot dot-research">🔍</div>
-              <div class="tl-card">
-                <div class="tl-phase" style="color:#1e40af;">Phase 1 · Discovery & Brief</div>
-                <div class="tl-title">Kickoff, brief analysis & stakeholder goals</div>
-                <div class="tl-desc">Client brief comes in — goals, audience, competitors, scope. Translate a raw document into a clear design direction fast.</div>
-                <div class="tl-claude">
-                  <div class="tl-claude-label">Claude does</div>
-                  <div class="tl-claude-text">Paste the client brief → Claude extracts <strong>design goals, audience personas, and constraints</strong>. Ask it to identify gaps before your kickoff call. Summarise competitors into a structured table.</div>
-                </div>
-                <div class="prompt-chips">
-                  <span class="chip chip-blue">Summarise this brief into goals + constraints</span>
-                  <span class="chip chip-blue">What questions should I ask the client?</span>
-                  <span class="chip chip-blue">Analyse these 3 competitor sites</span>
-                </div>
-                <div class="phase-tools" style="margin-top:12px;">
-                  <span class="phase-tool">Claude Projects</span>
-                  <span class="phase-tool">Deep Research</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 2 -->
-            <div class="tl-item">
-              <div class="tl-dot dot-research">🧪</div>
-              <div class="tl-card">
-                <div class="tl-phase" style="color:#1e40af;">Phase 2 · UX Research</div>
-                <div class="tl-title">User research, personas & journey maps</div>
-                <div class="tl-desc">Building empathy for the end user before touching Figma. Interview scripts, personas, pain-point mapping.</div>
-                <div class="tl-claude">
-                  <div class="tl-claude-label">Claude + Figma (QoQo plugin) does</div>
-                  <div class="tl-claude-text">Claude drafts <strong>interview scripts and survey questions</strong>. Use <strong>QoQo.ai Figma plugin</strong> to generate personas, journey maps and affinity maps directly onto a FigJam board. Claude synthesises interview notes into key insights.</div>
-                </div>
-                <div class="prompt-chips">
-                  <span class="chip chip-blue">Write 8 user interview questions for [audience]</span>
-                  <span class="chip chip-blue">Turn these notes into a user persona</span>
-                  <span class="chip chip-blue">Map the pain points into a journey</span>
-                </div>
-                <div class="phase-tools" style="margin-top:12px;">
-                  <span class="phase-tool">QoQo.ai (Figma)</span>
-                  <span class="phase-tool">FigJam</span>
-                  <span class="phase-tool">Claude Projects</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 3 -->
-            <div class="tl-item">
-              <div class="tl-dot dot-strategy">🗺️</div>
-              <div class="tl-card">
-                <div class="tl-phase" style="color:#065f46;">Phase 3 · Sitemap & IA</div>
-                <div class="tl-title">Information architecture & page structure</div>
-                <div class="tl-desc">Deciding what pages exist, how they connect, what content lives where. Often goes back-and-forth with the client.</div>
-                <div class="tl-claude">
-                  <div class="tl-claude-label">Claude does</div>
-                  <div class="tl-claude-text">From the brief + research, Claude generates a <strong>full sitemap with page names, hierarchy and content notes</strong>. Drop it into FigJam as a structured list. Claude also drafts content outlines per page.</div>
-                </div>
-                <div class="prompt-chips">
-                  <span class="chip chip-green">Generate a sitemap for a [type] website</span>
-                  <span class="chip chip-green">Write a content outline for the homepage</span>
-                  <span class="chip chip-green">Suggest nav structure for this audience</span>
-                </div>
-                <div class="phase-tools" style="margin-top:12px;">
-                  <span class="phase-tool">Claude Artifacts</span>
-                  <span class="phase-tool">FigJam</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 4 -->
-            <div class="tl-item">
-              <div class="tl-dot dot-design">🎨</div>
-              <div class="tl-card">
-                <div class="tl-phase" style="color:#5b21b6;">Phase 4 · Moodboard & Visual Direction</div>
-                <div class="tl-title">Visual language, references & tone</div>
-                <div class="tl-desc">Establishing the visual feel before committing to a design system. Colour direction, typographic mood, reference gathering.</div>
-                <div class="tl-claude">
-                  <div class="tl-claude-label">Claude + Figma does</div>
-                  <div class="tl-claude-text">Claude generates <strong>detailed visual direction prompts</strong> — brand adjectives, colour palette rationale, typographic pairings. Use <strong>Figma AI Canvas Agent</strong> to turn those into moodboard frames directly on canvas.</div>
-                </div>
-                <div class="prompt-chips">
-                  <span class="chip chip-purple">Describe a visual direction for [brand adjectives]</span>
-                  <span class="chip chip-purple">Suggest 3 type pairings with rationale</span>
-                  <span class="chip chip-purple">Generate a colour palette for [mood]</span>
-                </div>
-                <div class="phase-tools" style="margin-top:12px;">
-                  <span class="phase-tool">Figma AI (Canvas Agent)</span>
-                  <span class="phase-tool">Claude Artifacts</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 5 -->
-            <div class="tl-item">
-              <div class="tl-dot dot-system">🧱</div>
-              <div class="tl-card">
-                <div class="tl-phase" style="color:#713f12;">Phase 5 · Design System</div>
-                <div class="tl-title">Tokens, components & style foundations</div>
-                <div class="tl-desc">Building the single source of truth — colours, type scale, spacing, component library — before any screens are designed.</div>
-                <div class="tl-claude">
-                  <div class="tl-claude-label">Claude + Figma MCP does</div>
-                  <div class="tl-claude-text">Claude generates <strong>token naming conventions, spacing scales and component specs</strong>. With Figma MCP connected to Claude Code, it reads your variables directly and writes a <strong>SKILL.md</strong> that teaches devs the full system.</div>
-                </div>
-                <div class="prompt-chips">
-                  <span class="chip chip-yellow">Generate a spacing scale for this project</span>
-                  <span class="chip chip-yellow">Document these tokens as a SKILL.md</span>
-                  <span class="chip chip-yellow">Write component usage rules for Button</span>
-                </div>
-                <div class="phase-tools" style="margin-top:12px;">
-                  <span class="phase-tool">Figma MCP</span>
-                  <span class="phase-tool">Tokens Studio</span>
-                  <span class="phase-tool">Claude Code</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 6 -->
-            <div class="tl-item">
-              <div class="tl-dot dot-design">📐</div>
-              <div class="tl-card">
-                <div class="tl-phase" style="color:#5b21b6;">Phase 6 · Wireframes & Screen Design</div>
-                <div class="tl-title">Lo-fi flows → hi-fi screens</div>
-                <div class="tl-desc">Translating IA and content outlines into actual layouts. Moving from wireframes to polished, component-driven screens.</div>
-                <div class="tl-claude">
-                  <div class="tl-claude-label">Claude + Figma does</div>
-                  <div class="tl-claude-text">Use <strong>UX Pilot Figma plugin</strong> to prompt-generate wireframe frames. Claude writes <strong>UX copy, microcopy, and placeholder content</strong> matched to the brand voice. Ask Claude to critique layouts for hierarchy and accessibility before moving to hi-fi.</div>
-                </div>
-                <div class="prompt-chips">
-                  <span class="chip chip-purple">Write headline + subheadline for this hero section</span>
-                  <span class="chip chip-purple">Critique this layout for visual hierarchy</span>
-                  <span class="chip chip-purple">Suggest CTA copy for [goal]</span>
-                </div>
-                <div class="phase-tools" style="margin-top:12px;">
-                  <span class="phase-tool">UX Pilot (Figma)</span>
-                  <span class="phase-tool">Figma AI</span>
-                  <span class="phase-tool">Claude Projects</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 7 -->
-            <div class="tl-item">
-              <div class="tl-dot dot-review">💬</div>
-              <div class="tl-card">
-                <div class="tl-phase" style="color:#991b1b;">Phase 7 · Client Presentation & Feedback</div>
-                <div class="tl-title">Presenting, handling feedback & iterating</div>
-                <div class="tl-desc">Sharing screens for approval, collecting structured feedback, making sense of conflicting notes, and turning it into clear revision tasks.</div>
-                <div class="tl-claude">
-                  <div class="tl-claude-label">Claude does</div>
-                  <div class="tl-claude-text">Claude writes the <strong>presentation narrative</strong> for each screen — explaining design decisions in client language. Paste raw feedback → Claude organises it into <strong>prioritised revision tasks</strong> and flags conflicting requests.</div>
-                </div>
-                <div class="prompt-chips">
-                  <span class="chip chip-red">Write a presentation narrative for this homepage</span>
-                  <span class="chip chip-red">Organise this feedback into revision tasks</span>
-                  <span class="chip chip-red">Flag conflicting requests in this feedback</span>
-                </div>
-                <div class="phase-tools" style="margin-top:12px;">
-                  <span class="phase-tool">Claude Projects</span>
-                  <span class="phase-tool">Figma Dev Mode</span>
-                  <span class="phase-tool">Monday.com</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 8 -->
-            <div class="tl-item">
-              <div class="tl-dot dot-strategy">🧭</div>
-              <div class="tl-card">
-                <div class="tl-phase" style="color:#065f46;">Phase 8 · Prototype & User Testing</div>
-                <div class="tl-title">Interactive prototypes & usability validation</div>
-                <div class="tl-desc">Making designs clickable and testable, writing test scripts, analysing session results.</div>
-                <div class="tl-claude">
-                  <div class="tl-claude-label">Claude + Figma does</div>
-                  <div class="tl-claude-text">Claude writes <strong>usability test scripts and task scenarios</strong>. Use <strong>Attention Insight Figma plugin</strong> to run AI heatmaps before live testing. Claude analyses session notes → <strong>issues ranked by severity</strong> with recommended fixes.</div>
-                </div>
-                <div class="prompt-chips">
-                  <span class="chip chip-green">Write a usability test script for this flow</span>
-                  <span class="chip chip-green">Rank these issues by severity</span>
-                  <span class="chip chip-green">Suggest fixes for this drop-off point</span>
-                </div>
-                <div class="phase-tools" style="margin-top:12px;">
-                  <span class="phase-tool">Attention Insight (Figma)</span>
-                  <span class="phase-tool">Claude Projects</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 9 -->
-            <div class="tl-item">
-              <div class="tl-dot dot-handoff">🤝</div>
-              <div class="tl-card">
-                <div class="tl-phase" style="color:var(--yellow);">Phase 9 · Dev Handoff & Build</div>
-                <div class="tl-title">Figma → production-ready code</div>
-                <div class="tl-desc">The final bridge — designer prepares the file, developer receives it with Claude Code + Figma MCP and builds with zero back-and-forth.</div>
-                <div class="tl-claude">
-                  <div class="tl-claude-label">Claude Code + Figma MCP does</div>
-                  <div class="tl-claude-text">Dev runs <strong>Claude Code with Figma MCP active</strong> + the UI/UX Pro Max skill loaded. Claude reads design tokens, spacing, and component names directly from Figma and writes <strong>production-ready React components</strong> that match the design system exactly.</div>
-                </div>
-                <div class="prompt-chips">
-                  <span class="chip chip-ink">Implement this Figma frame as a React component</span>
-                  <span class="chip chip-ink">Match spacing and tokens exactly from the design</span>
-                  <span class="chip chip-ink">Note any edge cases or missing states</span>
-                </div>
-                <div class="phase-tools" style="margin-top:12px;">
-                  <span class="phase-tool">Claude Code</span>
-                  <span class="phase-tool">Figma MCP</span>
-                  <span class="phase-tool">UI/UX Pro Max Skill</span>
-                  <span class="phase-tool">Figma Dev Mode</span>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- end timeline -->
-
-          <div class="callout callout-yellow" style="margin-top:32px;">
-            <strong>How to use this:</strong> Each phase maps directly to your tentwenty project board. Bookmark the prompt chips that match your current phase — copy, adapt, and run them in Claude with your project context loaded.
-          </div>
-        </section>
-
       </main>
     </div>
 
     <script>
-      // ── MOBILE HAMBURGER ──
-      const hamburger = document.getElementById("hamburger");
-      const sidebar = document.querySelector(".sidebar");
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("open");
-        sidebar.classList.toggle("open");
-      });
-      document.querySelectorAll(".nav-item").forEach(link => {
-        link.addEventListener("click", () => {
-          hamburger.classList.remove("open");
-          sidebar.classList.remove("open");
-        });
-      });
-
       const navItems = document.querySelectorAll(".nav-item");
       const sections = document.querySelectorAll("section[id]");
 
